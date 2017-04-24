@@ -3,7 +3,7 @@ package blood.db.pojos;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
+import blood.db.pojos.*;
 import javax.persistence.*;
 
 @Entity
@@ -17,7 +17,12 @@ public class Cells implements Serializable {
 	private float highL;
 	private float lowL;
 	private Integer id;
+	@ManyToMany(mappedBy="cells-ill")
 	private List<Illnes> illnes;
+	@ManyToMany
+	@JoinTable(name="pats-cells",
+	joinColumns={@JoinColumn(name="cells_id", referencedColumnName="id")},
+    inverseJoinColumns={@JoinColumn(name="patient_id", referencedColumnName="id")})
 	private List<Patient> patients;	
 
 	public Cells() {

@@ -1,5 +1,5 @@
 package blood.db.pojos;
-
+import blood.db.pojos.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,12 @@ private static final long serialVersionUID = -3290462529390006987L;
 	private String type;
 	private float lowLevels;
 	private float highLevels;
+	@ManyToMany
+	@JoinTable(name="pats-mol",
+	joinColumns={@JoinColumn(name="molecules_id", referencedColumnName="id")},
+    inverseJoinColumns={@JoinColumn(name="patient_id", referencedColumnName="id")})
 	private List<Patient> patients;
+	@ManyToMany(mappedBy="mol-ill")
 	private List<Illnes> illnes;
 	
 	public Molecules() {

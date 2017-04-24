@@ -1,9 +1,8 @@
 package blood.db.pojos;
-
+import blood.db.pojos.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import blood.db.pojos.Nurse;
 import blood.db.pojos.Symptoms;
 import blood.db.pojos.Cells;
 import blood.db.pojos.Molecules;
@@ -21,12 +20,27 @@ private static final long serialVersionUID = -7280949047692384198L;
 	private String name;
 	private String type;
 	private Boolean chronic;
-	private List<Nurse> nurses;
+	@ManyToMany
+	@JoinTable(name="symp-ill",
+	joinColumns={@JoinColumn(name="illnes_id", referencedColumnName="id")},
+    inverseJoinColumns={@JoinColumn(name="symptoms_id", referencedColumnName="id")})
 	private List<Symptoms> symptoms;
+	@ManyToMany
+	@JoinTable(name="cells-ill",
+	joinColumns={@JoinColumn(name="illnes_id", referencedColumnName="id")},
+    inverseJoinColumns={@JoinColumn(name="cells_id", referencedColumnName="id")})
 	private List<Cells> cells;
+	@ManyToMany
+	@JoinTable(name="pats-ill",
+	joinColumns={@JoinColumn(name="illnes_id", referencedColumnName="id")},
+    inverseJoinColumns={@JoinColumn(name="patient_id", referencedColumnName="id")})
 	private List<Patient> patients;
+	@ManyToMany
+	@JoinTable(name="mol-ill",
+	joinColumns={@JoinColumn(name="illnes_id", referencedColumnName="id")},
+    inverseJoinColumns={@JoinColumn(name="molecules_id", referencedColumnName="id")})
 	private List<Molecules> molecules;
-	//constructores añadir lista de nurses
+
 	
 	public Illnes() {
 		super();
@@ -144,11 +158,4 @@ private static final long serialVersionUID = -7280949047692384198L;
 		return "Illnes [id=" + id + ", name=" + name + ", type=" + type + ", chronic=" + chronic + "]";
 	}
 
-	public List<Nurse> getNurses() {
-		return nurses;
-	}
-
-	public void setNurses(List<Nurse> nurses) {
-		this.nurses = nurses;
-	}
 }

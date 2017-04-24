@@ -3,7 +3,7 @@ package blood.db.pojos;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
+import blood.db.pojos.*;
 import javax.persistence.*;
 @Entity
 @Table(name="Symptoms")
@@ -15,7 +15,12 @@ private static final long serialVersionUID = 6952444966932416547L;
     @TableGenerator(name="Cells", table="sql_sequence", pkColumnName="name", valueColumnName="seq", pkColumnValue="Cells")
 	private Integer id;
     private String type;
+	@ManyToMany
+	@JoinTable(name="pats-symp",
+	joinColumns={@JoinColumn(name="symptoms_id", referencedColumnName="id")},
+    inverseJoinColumns={@JoinColumn(name="patient_id", referencedColumnName="id")})
     private List<Patient> patients;
+    @ManyToMany(mappedBy="symp-ill")
     private List<Illnes> illnes;
     
     public Symptoms() {

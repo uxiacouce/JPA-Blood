@@ -16,7 +16,7 @@ import javax.persistence.TableGenerator;
 
 import blood.db.pojos.Patient;
 import blood.db.pojos.Hospital;
-
+import blood.db.pojos.*;
 @Entity
 @Table(name="Nurses")
 public class Nurse implements Serializable {

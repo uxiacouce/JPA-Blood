@@ -12,12 +12,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
-
-//import Blood.db.pojos.Cells;
-//import Blood.db.pojos.Molecules;
-//import Blood.db.pojos.Nurse;
-//import Blood.db.pojos.Patient;
-//import Blood.db.pojos.Symptoms;
+import blood.db.pojos.Illnes;
+import blood.db.pojos.Cells;
+import blood.db.pojos.Molecules;
+import blood.db.pojos.Nurse;
+import blood.db.pojos.Symptoms;
 @Entity
 @Table(name="Patient")
 public class Patient implements Serializable {
@@ -36,11 +35,15 @@ public class Patient implements Serializable {
 	joinColumns={@JoinColumn(name="patient_id", referencedColumnName="id")},
     inverseJoinColumns={@JoinColumn(name="nurse_id", referencedColumnName="id")})
 	private List<Nurse> nurses;
-	
+	@ManyToMany(mappedBy="pats-symp")
 	private List<Symptoms> symptoms;
+	@ManyToMany(mappedBy="pats-cells")
 	private List<Cells> cells;
+	@ManyToMany(mappedBy="pats-mol")
 	private List<Molecules> molecules;
-
+	@ManyToMany(mappedBy="pats-ill")
+	private List<Illnes> illness;
+//rellenar constructores con lsitas de nurse y illnes
 	public Patient() {
 		super();
 		this.symptoms = new ArrayList<>();
@@ -152,5 +155,11 @@ public class Patient implements Serializable {
 	}
 	public void setNurses(List<Nurse> nurses) {
 		this.nurses = nurses;
+	}
+	public List<Illnes> getIllness() {
+		return illness;
+	}
+	public void setIllness(List<Illnes> illness) {
+		this.illness = illness;
 	}
 }

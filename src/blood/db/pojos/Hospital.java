@@ -1,5 +1,6 @@
 package blood.db.pojos;
 import java.io.Serializable;
+import blood.db.pojos.*;
 import java.util.List;
 
 import javax.persistence.Entity;
