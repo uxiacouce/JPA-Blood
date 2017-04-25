@@ -114,6 +114,8 @@ public class Hospital implements Serializable {
 	public String toString() {
 		return "Hospital [id=" + id + ", name=" + name + ", location=" + location + ", range=" + range + "]";
 	}
+	
+	
 
 
 }
