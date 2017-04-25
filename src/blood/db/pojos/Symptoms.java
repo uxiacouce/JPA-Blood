@@ -21,12 +21,12 @@ private static final long serialVersionUID = 6952444966932416547L;
     inverseJoinColumns={@JoinColumn(name="patient_id", referencedColumnName="id")})
     private List<Patient> patients;
     @ManyToMany(mappedBy="symp-ill")
-    private List<Illnes> illnes;
+    private List<Illnes> illness;
     
     public Symptoms() {
     	super();
     	this.patients = new ArrayList<>();
-    	this.illnes = new ArrayList<>();
+    	this.illness = new ArrayList<>();
     	// TODO Auto-generated constructor stub
     }
     
@@ -35,7 +35,7 @@ private static final long serialVersionUID = 6952444966932416547L;
     	this.id = id;
     	this.type = type;
     	this.patients = new ArrayList<Patient>();
-    	this.illnes = new ArrayList<Illnes>();
+    	this.illness = new ArrayList<Illnes>();
     }
     
     public Symptoms(String type){
@@ -85,9 +85,35 @@ public void setPatients(List<Patient> patients) {
 	this.patients = patients;
 }
 public List<Illnes> getIllnes() {
-	return illnes;
+	return illness;
 }
-public void setIllnes(List<Illnes> illnes) {
-	this.illnes = illnes;
+public void setIllnes(List<Illnes> illness) {
+	this.illness = illness;
 }
+public void addIllnes (Illnes illnes){
+	if (!illness.contains(illnes)) {
+		this.illness.add(illnes);
+	}
+}
+public void removeIllnes (Illnes illnes){
+	if (illness.contains(illnes)) {
+		this.illness.remove(illnes);
+	}
+}
+public void addPatient(Patient patient) {
+	if (!patients.contains(patient)) {
+		this.patients.add(patient);
+	}
+}
+
+public void removePatient(Patient patient) {
+	if (patients.contains(patient)) {
+		this.patients.remove(patient);
+	}
+}
+@Override
+public String toString() {
+	return "Symptoms [id=" + id + ", type=" + type + "]";
+}
+
 }

@@ -109,7 +109,16 @@ public class Hospital implements Serializable {
 	public void setNurses(List<Nurse> nurses) {
 		this.nurses = nurses;
 	}
-
+	public void addNurse (Nurse nurse){
+		if (!nurses.contains(nurse)) {
+			this.nurses.add(nurse);
+		}
+	}
+	public void removeNurse (Nurse nurse){
+		if (nurses.contains(nurse)) {
+			this.nurses.remove(nurse);
+		}
+	}
 	@Override
 	public String toString() {
 		return "Hospital [id=" + id + ", name=" + name + ", location=" + location + ", range=" + range + "]";

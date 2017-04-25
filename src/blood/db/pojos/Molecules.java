@@ -22,7 +22,7 @@ private static final long serialVersionUID = -3290462529390006987L;
     inverseJoinColumns={@JoinColumn(name="patient_id", referencedColumnName="id")})
 	private List<Patient> patients;
 	@ManyToMany(mappedBy="mol-ill")
-	private List<Illnes> illnes;
+	private List<Illnes> illness;
 	
 	public Molecules() {
 		super();
@@ -35,7 +35,7 @@ private static final long serialVersionUID = -3290462529390006987L;
 		this.lowLevels = highL;
 		this.highLevels = lowL;
 		this.patients = new ArrayList<Patient>();
-		this.illnes = new ArrayList<Illnes>();
+		this.illness = new ArrayList<Illnes>();
 	}
 	
 	
@@ -96,11 +96,32 @@ private static final long serialVersionUID = -3290462529390006987L;
 	}
 
 	public List<Illnes> getIllnes() {
-		return illnes;
+		return illness;
 	}
 
 	public void setIllnes(List<Illnes> illnes) {
-		this.illnes = illnes;
+		this.illness = illnes;
+	}
+	public void addPatient(Patient patient) {
+		if (!patients.contains(patient)) {
+			this.patients.add(patient);
+		}
+	}
+
+	public void removePatient(Patient patient) {
+		if (patients.contains(patient)) {
+			this.patients.remove(patient);
+		}
+	}
+	public void addIllnes (Illnes illnes){
+		if (!illness.contains(illnes)) {
+			this.illness.add(illnes);
+		}
+	}
+	public void removeIllnes (Illnes illnes){
+		if (illness.contains(illnes)) {
+			this.illness.remove(illnes);
+		}
 	}
 	@Override
 	public String toString() {

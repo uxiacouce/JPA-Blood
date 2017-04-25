@@ -3,9 +3,7 @@ import blood.db.pojos.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import blood.db.pojos.Symptoms;
-import blood.db.pojos.Cells;
-import blood.db.pojos.Molecules;
+
 import javax.persistence.*;
 
 @Entity
@@ -152,7 +150,49 @@ private static final long serialVersionUID = -7280949047692384198L;
 	public void setMolecules(List<Molecules> molecules) {
 		this.molecules = molecules;
 	}
+	public void addPatient(Patient patient) {
+		if (!patients.contains(patient)) {
+			this.patients.add(patient);
+		}
+	}
 
+	public void removePatient(Patient patient) {
+		if (patients.contains(patient)) {
+			this.patients.remove(patient);
+		}
+	}
+	public void addSymptoms (Symptoms symptom){
+		if (!symptoms.contains(symptom)) {
+			this.symptoms.add(symptom);
+		}
+	}
+	public void removeSymptom (Symptoms symptom){
+		if (symptoms.contains(symptom)) {
+			this.symptoms.remove(symptom);
+		}
+	}
+	public void addMolecule(Molecules molecule) {
+		if (!molecules.contains(molecule)) {
+			this.molecules.add(molecule);
+		}
+	}
+
+	public void removeMolecule(Molecules molecule) {
+		if (molecules.contains(molecule)) {
+			this.molecules.remove(molecule);
+		}
+	}
+	public void addCell(Cells cell) {
+		if (!cells.contains(cell)) {
+			this.cells.add(cell);
+		}
+	}
+
+	public void removeCell(Cells cell) {
+		if (cells.contains(cell)) {
+			this.cells.remove(cell);
+		}
+	}
 	@Override
 	public String toString() {
 		return "Illnes [id=" + id + ", name=" + name + ", type=" + type + ", chronic=" + chronic + "]";

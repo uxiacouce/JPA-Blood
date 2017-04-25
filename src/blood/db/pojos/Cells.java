@@ -18,7 +18,7 @@ public class Cells implements Serializable {
 	private float lowL;
 	private Integer id;
 	@ManyToMany(mappedBy="cells-ill")
-	private List<Illnes> illnes;
+	private List<Illnes> illness;
 	@ManyToMany
 	@JoinTable(name="pats-cells",
 	joinColumns={@JoinColumn(name="cells_id", referencedColumnName="id")},
@@ -38,7 +38,7 @@ public class Cells implements Serializable {
 		this.type = type;
 		this.highL = highL;
 		this.lowL = lowL;
-		this.illnes = new ArrayList<Illnes>();
+		this.illness = new ArrayList<Illnes>();
 		this.patients = new ArrayList<Patient>();
 		
 	}
@@ -98,10 +98,10 @@ public class Cells implements Serializable {
 		this.id = id;
 	}
 	public List<Illnes> getIllnes() {
-		return illnes;
+		return illness;
 	}
-	public void setIllnes(List<Illnes> illnes) {
-		this.illnes = illnes;
+	public void setIllnes(List<Illnes> illness) {
+		this.illness = illness;
 	}
 	public List<Patient> getPatients() {
 		return patients;
@@ -109,7 +109,27 @@ public class Cells implements Serializable {
 	public void setPatients(List<Patient> patients) {
 		this.patients = patients;
 	}
+	public void addIllnes (Illnes illnes){
+		if (!illness.contains(illnes)) {
+			this.illness.add(illnes);
+		}
+	}
+	public void removeIllnes (Illnes illnes){
+		if (illness.contains(illnes)) {
+			this.illness.remove(illnes);
+		}
+	}
+	public void addPatient(Patient patient) {
+		if (!patients.contains(patient)) {
+			this.patients.add(patient);
+		}
+	}
 
+	public void removePatient(Patient patient) {
+		if (patients.contains(patient)) {
+			this.patients.remove(patient);
+		}
+	}
 	@Override
 	public String toString() {
 		return "Cells [type=" + type + ", highL=" + highL + ", lowL=" + lowL + ", id=" + id + "]";

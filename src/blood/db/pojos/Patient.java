@@ -43,11 +43,13 @@ public class Patient implements Serializable {
 	private List<Molecules> molecules;
 	@ManyToMany(mappedBy="pats-ill")
 	private List<Illnes> illness;
-//rellenar constructores con lsitas de nurse y illnes
+
 	public Patient() {
 		super();
 		this.symptoms = new ArrayList<>();
 		// TODO Auto-generated constructor stub
+		this.nurses= new ArrayList<>();
+		this.illness= new ArrayList<>();
 		this.setCells(new ArrayList<Cells>());
 		this.setMolecules(new ArrayList <Molecules>());
 	}
@@ -61,6 +63,8 @@ public class Patient implements Serializable {
 		this.symptoms = new ArrayList<Symptoms>();
 		this.cells = new ArrayList<Cells>();
 		this.molecules = new ArrayList<Molecules>();
+		this.nurses= new ArrayList<Nurse>();
+		this.illness= new ArrayList<Illnes>();
 	}
 
 
@@ -162,4 +166,62 @@ public class Patient implements Serializable {
 	public void setIllness(List<Illnes> illness) {
 		this.illness = illness;
 	}
+	public void addNurse (Nurse nurse){
+		if (!nurses.contains(nurse)) {
+			this.nurses.add(nurse);
+		}
+	}
+	public void removeNurse (Nurse nurse){
+		if (nurses.contains(nurse)) {
+			this.nurses.remove(nurse);
+		}
+	}
+	public void addMolecule(Molecules molecule) {
+		if (!molecules.contains(molecule)) {
+			this.molecules.add(molecule);
+		}
+	}
+
+	public void removeMolecule(Molecules molecule) {
+		if (molecules.contains(molecule)) {
+			this.molecules.remove(molecule);
+		}
+	}
+	public void addCell(Cells cell) {
+		if (!cells.contains(cell)) {
+			this.cells.add(cell);
+		}
+	}
+
+	public void removeCell(Cells cell) {
+		if (cells.contains(cell)) {
+			this.cells.remove(cell);
+		}
+	}
+	public void addSymptoms (Symptoms symptom){
+		if (!symptoms.contains(symptom)) {
+			this.symptoms.add(symptom);
+		}
+	}
+	public void removeSymptom (Symptoms symptom){
+		if (symptoms.contains(symptom)) {
+			this.symptoms.remove(symptom);
+		}
+	}
+	public void addIllnes (Illnes illnes){
+		if (!illness.contains(illnes)) {
+			this.illness.add(illnes);
+		}
+	}
+	public void removeIllnes (Illnes illnes){
+		if (illness.contains(illnes)) {
+			this.illness.remove(illnes);
+		}
+	}
+	@Override
+	public String toString() {
+		return "Patient [id=" + id + ", name=" + name + ", age=" + age + ", blood=" + blood + ", smoker=" + smoker
+				+ ", gender=" + gender + "]";
+	}
+	
 }

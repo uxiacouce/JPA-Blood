@@ -1,5 +1,6 @@
 package blood.db.pojos;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Basic;
@@ -39,8 +40,25 @@ private static final long serialVersionUID = 1857194774423858547L;
 	public Nurse() {
 		super();
 		// TODO Auto-generated constructor stub
+		this.patients = new ArrayList<>();
 	}
 	
+	public Nurse(String name, byte[] photo, Hospital hospital, List<Patient> patients) {
+		super();
+		this.name = name;
+		this.photo = photo;
+		this.hospital = hospital;
+		this.patients = patients;
+	}
+
+	public List<Patient> getPatients() {
+		return patients;
+	}
+
+	public void setPatients(List<Patient> patients) {
+		this.patients = patients;
+	}
+
 	public Nurse (Integer id, String name, byte[] photo) {
 		super();
 		this.id = id;
@@ -101,6 +119,17 @@ private static final long serialVersionUID = 1857194774423858547L;
 
 	public void setHospital(Hospital hospital) {
 		this.hospital = hospital;
+	}
+	public void addPatient(Patient patient) {
+		if (!patients.contains(patient)) {
+			this.patients.add(patient);
+		}
+	}
+
+	public void removePatient(Patient patient) {
+		if (patients.contains(patient)) {
+			this.patients.remove(patient);
+		}
 	}
 
 	@Override
