@@ -1,25 +1,42 @@
 package blood.db.jpa;
 
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
 import blood.db.pojos.Nurse;
 
-public class JPANurse implements FunctionsDB<Nurse> {
-
-	public EntityManager StartMethod() {
-		EntityManager em = Persistence.createEntityManagerFactory("company-provider").createEntityManager();
-		em.getTransaction().begin();
-		em.createNativeQuery("PRAGMA foreign_keys=ON").executeUpdate();
-		em.getTransaction().commit();
-		return em;
-	}	
+public class JPANurse extends generalMethods {
 	
-	void JPACreate(Nurse nurse){
+	void SQLCreate(Nurse nurse){
 		
 		
 		em.getTransaction().begin();
 		em.persist(nurse);
 		em.getTransaction().commit();
 	}
-}
+	
+	void SQLDelete(Nurse nurse){
+		
+		em.getTransaction().begin();
+		em.remove(nurse);
+		em.getTransaction().commit();
+		
+	}
+	
+/*	Nurse SQLSearch(String name){
+		
+		
+		
+	}*/
+	
+	
+	
+
+	}
+	
+	
+

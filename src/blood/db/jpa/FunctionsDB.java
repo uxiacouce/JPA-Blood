@@ -7,8 +7,6 @@ import java.util.ArrayList;
 
 
 public interface FunctionsDB <Objeto> {
-	public void SQLDisconnect();
-	public void SQLConnect();
 	public void SQLCreate() throws SQLException;
 	public ArrayList<Objeto> SQLSelect();
 	public void SQLDrop();
