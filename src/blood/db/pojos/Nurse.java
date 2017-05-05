@@ -1,8 +1,13 @@
 package blood.db.pojos;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
+import java.awt.image.WritableRaster;
+import java.io.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -109,8 +114,22 @@ private static final long serialVersionUID = 1857194774423858547L;
 	public byte[] getPhoto() {
 		return photo;
 	}
-	public void setPhoto(byte[] photo) {
-		this.photo = photo;
+	public void setPhoto(String direction) {
+		try{
+			File file = new File (direction);
+			BufferedImage bufferedImage = ImageIO.read(file);
+
+			 // get DataBufferBytes from Raster
+			 WritableRaster raster = bufferedImage .getRaster();
+			 DataBufferByte data   = (DataBufferByte) raster.getDataBuffer();
+
+			 this.photo=data.getData();
+			
+		}
+		catch (Exception ex){
+			
+		}
+		
 	}
 
 	public Hospital getHospital() {
