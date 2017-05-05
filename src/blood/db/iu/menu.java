@@ -82,7 +82,7 @@ public class menu {
 		else if (selection == 3){//read
 			System.out.println("Introduce the name of the hospital that you want to delete");
 			List<Hospital> hospitals = jpa_Hospital.SQLSearch(console.readLine());
-			Iterator it = hospitals.iterator();
+			Iterator<Hospital> it = hospitals.iterator();
 			for(int i=1; it.hasNext(); i++){
 				System.out.println(i+".-"+it.toString());
 			}
@@ -138,7 +138,7 @@ public class menu {
 			System.out.println("Introduce the direction of the photo with its extension");
 			nurse.setPhoto(console.readLine());
 			System.out.println("Introduce his/her hospital");
-		
+			
 			
 		}
 	}
