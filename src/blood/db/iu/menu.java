@@ -135,7 +135,8 @@ public class menu {
 			
 			System.out.println("Introduce a name");
 			nurse.setName(console.readLine());
-			System.out.println("Introduce a photo");
+			System.out.println("Introduce the direction of the photo with its extension");
+			nurse.setPhoto(console.readLine());
 			System.out.println("Introduce his/her hospital");
 		
 			
