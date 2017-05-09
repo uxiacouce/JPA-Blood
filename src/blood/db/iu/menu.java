@@ -1,17 +1,16 @@
 package blood.db.iu;
 //prueba del pull
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.*;
+
 import java.util.*;
-import java.util.ListIterator;
 
 import blood.db.iu.*;
-import blood.db.jpa.JPAHospital;
-import blood.db.jpa.generalMethods;
+import blood.db.jpa.*;
+
 import blood.db.pojos.*;
 
-public class menu {
+public class menu extends GeneralMethods {
 	
 	static void menu1(){
 		
@@ -29,7 +28,7 @@ public class menu {
 	
 	
 	static void menu2(){
-	System.out.println("Introduce 1 to create ");
+	System.out.println("Introduce 1 to Insert ");
 	System.out.println("Introduce 2 to delete ");
 	System.out.println("Introduce 3 to show");
 	System.out.println("Introduce 4 to update");
@@ -42,8 +41,7 @@ public class menu {
 	
 	public static void main(String [] args){
 		try{
-		generalMethods g = new generalMethods();
-		g.StartMethod();
+		GeneralMethods.StartMethod();
 	menu1();	
 	InputStreamReader inputStreamReader = new InputStreamReader(System.in);
 	BufferedReader console = new BufferedReader(inputStreamReader);
@@ -54,7 +52,7 @@ public class menu {
 		System.out.println("Choose an option");
 		menu2();
 		int selection = Integer.parseInt(console.readLine());
-		if (selection ==1){//create
+		if (selection ==1){//Insert
 			Hospital hospital = new Hospital();
 			System.out.println("Introduce a name");
 			hospital.setName(console.readLine());
@@ -62,7 +60,7 @@ public class menu {
 			hospital.setLocation(console.readLine());
 			System.out.print("Introduce a range");
 			hospital.setRange(Integer.parseInt(console.readLine()));
-			jpa_Hospital.SQLCreate(hospital);
+			jpa_Hospital.SQLInsert(hospital);
 			
 		}
 		else if(selection == 2){//delete
@@ -75,7 +73,7 @@ public class menu {
 			}
 			System.out.println("Introduzca el hospital que desea seleccionar");
 			int op =Integer.parseInt(console.readLine());
-			jpa_Hospital.SQLDelete(hospitals.get(op));// el hospital de la lista que hemos buscado
+			jpa_Hospital.SQLDelete(hospitals.get(op));// the hospital we were looking for
 			
 				
 		}

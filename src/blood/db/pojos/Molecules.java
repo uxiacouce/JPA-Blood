@@ -21,7 +21,7 @@ private static final long serialVersionUID = -3290462529390006987L;
 	joinColumns={@JoinColumn(name="molecules_id", referencedColumnName="id")},
     inverseJoinColumns={@JoinColumn(name="patient_id", referencedColumnName="id")})
 	private List<Patient> patients;
-	@ManyToMany(mappedBy="mol-ill")
+	@ManyToMany(mappedBy="molecules")
 	private List<Illnes> illness;
 	
 	public Molecules() {

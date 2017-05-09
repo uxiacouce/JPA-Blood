@@ -16,12 +16,12 @@ public class Hospital implements Serializable {
 	private static final long serialVersionUID = -8273180762878531017L;
 	@Id
 	@GeneratedValue(generator="Hospital")
-	@TableGenerator(name="Hospital",table="sqlite_secuence", pkColumnName="name" , valueColumnName="seq",pkColumnValue="Hospital")
+	@TableGenerator(name="Hospital",table="sqlite_sequence", pkColumnName="name" , valueColumnName="seq",pkColumnValue="Hospital")
 	private Integer id;
 	private String name;
 	private String location;
 	private Integer range;
-	@OneToMany(mappedBy="Hospital")
+	@OneToMany(mappedBy="hospital")
 	private List<Nurse> nurses;
 	
 	public Hospital() {

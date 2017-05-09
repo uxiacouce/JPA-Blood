@@ -11,13 +11,9 @@ import javax.persistence.Query;
 
 import blood.db.pojos.Hospital;
 import blood.db.pojos.Nurse;
-public class JPAHospital extends generalMethods {
+public class JPAHospital extends GeneralMethods {
 	
-	
-	
-	
-	
-	public void SQLCreate(Hospital hospital){
+	public void SQLInsert(Hospital hospital){
 		
 		
 		em.getTransaction().begin();

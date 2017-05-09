@@ -20,10 +20,11 @@ import blood.db.pojos.Symptoms;
 @Entity
 @Table(name="Patient")
 public class Patient implements Serializable {
+	private static final long serialVersionUID = -136657724985479318L;
+	
 	@Id
 	@GeneratedValue(generator="Patient")
 	@TableGenerator(name="Patient", table="sql_sequence", pkColumnName="name", valueColumnName="seq", pkColumnValue="Patient")
-	private static final long serialVersionUID = -136657724985479318L;
 	private Integer id;
 	private String name;
 	private Integer age;
@@ -35,13 +36,13 @@ public class Patient implements Serializable {
 	joinColumns={@JoinColumn(name="patient_id", referencedColumnName="id")},
     inverseJoinColumns={@JoinColumn(name="nurse_id", referencedColumnName="id")})
 	private List<Nurse> nurses;
-	@ManyToMany(mappedBy="pats-symp")
+	@ManyToMany(mappedBy="patients")
 	private List<Symptoms> symptoms;
-	@ManyToMany(mappedBy="pats-cells")
+	@ManyToMany(mappedBy="patients")
 	private List<Cells> cells;
-	@ManyToMany(mappedBy="pats-mol")
+	@ManyToMany(mappedBy="patients")
 	private List<Molecules> molecules;
-	@ManyToMany(mappedBy="pats-ill")
+	@ManyToMany(mappedBy="patients")
 	private List<Illnes> illness;
 
 	public Patient() {

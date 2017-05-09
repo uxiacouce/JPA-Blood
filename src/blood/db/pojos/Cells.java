@@ -17,7 +17,7 @@ public class Cells implements Serializable {
 	private float highL;
 	private float lowL;
 	private Integer id;
-	@ManyToMany(mappedBy="cells-ill")
+	@ManyToMany(mappedBy="cells")
 	private List<Illnes> illness;
 	@ManyToMany
 	@JoinTable(name="pats-cells",

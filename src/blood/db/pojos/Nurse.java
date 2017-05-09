@@ -38,7 +38,7 @@ private static final long serialVersionUID = 1857194774423858547L;
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="hosp_id")
 	private Hospital hospital;
-	@ManyToMany(mappedBy="nurs-pats")
+	@ManyToMany(mappedBy="nurses")
 	private List<Patient> patients;
 	
 	//modificar constructores lista de pacientes
@@ -112,15 +112,18 @@ private static final long serialVersionUID = 1857194774423858547L;
 		this.name = name;
 	}
 	public byte[] getPhoto() {
+		
+		
 		return photo;
 	}
 	public void setPhoto(String direction) {
 		try{
 			File file = new File (direction);
 			BufferedImage bufferedImage = ImageIO.read(file);
-
+			
 			 // get DataBufferBytes from Raster
-			 WritableRaster raster = bufferedImage .getRaster();
+			
+			 WritableRaster raster = bufferedImage.getRaster();
 			 DataBufferByte data   = (DataBufferByte) raster.getDataBuffer();
 
 			 this.photo=data.getData();

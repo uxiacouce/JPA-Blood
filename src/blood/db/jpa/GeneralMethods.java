@@ -3,14 +3,11 @@ package blood.db.jpa;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
-public class generalMethods {
-	EntityManager em;
-	public generalMethods(){
-		
-	}
+public class GeneralMethods {
+	protected static EntityManager em;
 	
-	public EntityManager StartMethod() {
-	    em = Persistence.createEntityManagerFactory("company-provider").createEntityManager();
+	static protected EntityManager StartMethod() {
+	    em = Persistence.createEntityManagerFactory("blood-provider").createEntityManager();
 		em.getTransaction().begin();
 		em.createNativeQuery("PRAGMA foreign_keys=ON").executeUpdate();
 		em.getTransaction().commit();

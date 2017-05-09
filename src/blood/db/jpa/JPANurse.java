@@ -9,7 +9,7 @@ import javax.persistence.Persistence;
 
 import blood.db.pojos.Nurse;
 
-public class JPANurse extends generalMethods {
+public class JPANurse extends GeneralMethods {
 	
 	void SQLCreate(Nurse nurse){
 		
